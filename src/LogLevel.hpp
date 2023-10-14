@@ -6,6 +6,7 @@ namespace al
     {
         VERBOSE,
         INFO,
+        SUCCESS,
         WARNING,
         FATAL
     };
