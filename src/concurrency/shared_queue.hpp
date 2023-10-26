@@ -69,6 +69,5 @@ namespace al
 
         shared_queue& operator=(const shared_queue&) = delete;
         shared_queue(const shared_queue& other) = delete;
-        
     };
 }

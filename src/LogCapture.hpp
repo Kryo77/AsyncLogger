@@ -10,18 +10,15 @@ namespace al
     class LogCapture
     {
     public:
-        LogCapture(const eLogLevel level, std::source_location&& location);
+        LogCapture(const eLogLevel level);
         ~LogCapture();
 
         template<typename T>
         std::ostream& operator<< (const T& d);
-
     private:
         const eLogLevel m_Level;
         std::chrono::system_clock::time_point m_Timestamp;
-        std::source_location m_Location;
         std::ostringstream m_Stream;
-        
     };
 
     template<typename T>
@@ -30,5 +27,4 @@ namespace al
         m_Stream << d;
         return m_Stream;
     }
-
 }

@@ -37,7 +37,7 @@ namespace al
         static void FlushQueue();
 
     protected:
-        static void PushMessage(const eLogLevel level, std::chrono::system_clock::time_point&& timestamp, std::source_location&& location, std::string&& message) noexcept;
+        static void PushMessage(const eLogLevel level, std::chrono::system_clock::time_point&& timestamp, std::string&& message) noexcept;
 
     private:
         void CallSinks(LogMessagePtr msgPtr);
@@ -54,7 +54,6 @@ namespace al
             static Logger i{};
             return i;
         }
-
     private:
         friend LogCapture::~LogCapture();
 
@@ -62,15 +61,14 @@ namespace al
         std::vector<LogSink> m_Sinks;
         bool m_Running = false;
         std::thread m_LogWorker;
-
     };
 
-    extern LogCapture LOG(const eLogLevel level, std::source_location location = std::source_location::current());
+    extern LogCapture LOG(const eLogLevel level);
 
     template<typename ...Args>
     inline void LOGF(const eLogLevel level, LogIntermediate formatString, Args&&... formatArgs)
     {
-        auto capture = LogCapture(level, std::move(formatString.Location()));
+        auto capture = LogCapture(level);
         capture << VFORMAT(formatString.FormatString(), MAKE_FORMAT_ARGS(std::forward<Args>(formatArgs)...));
     }
 }

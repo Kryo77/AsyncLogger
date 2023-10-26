@@ -4,10 +4,9 @@
 
 namespace al
 {
-    LogMessage::LogMessage(const eLogLevel level, std::chrono::system_clock::time_point&& timestamp, std::source_location&& location, std::string&& message) :
+    LogMessage::LogMessage(const eLogLevel level, std::chrono::system_clock::time_point&& timestamp, std::string&& message) :
         m_Level(level),
         m_Timestamp(timestamp),
-        m_Location(location),
         m_Message(message)
     {
         
@@ -16,11 +15,6 @@ namespace al
     const eLogLevel& LogMessage::Level() const
     {
         return m_Level;
-    }
-
-    const std::source_location& LogMessage::Location() const
-    {
-        return m_Location;
     }
 
     const std::string& LogMessage::Message() const

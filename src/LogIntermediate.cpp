@@ -2,23 +2,20 @@
 
 namespace al
 {
-    LogIntermediate::LogIntermediate(const std::string_view formatString, const std::source_location location) :
-        m_FormatString(formatString),
-        m_Location(location)
+    LogIntermediate::LogIntermediate(const std::string_view formatString) :
+        m_FormatString(formatString)
     {
         
     }
 
-    LogIntermediate::LogIntermediate(const char* formatString, const std::source_location location) :
-        m_FormatString(formatString),
-        m_Location(location)
+    LogIntermediate::LogIntermediate(const char* formatString) :
+        m_FormatString(formatString)
     {
 
     }
 
-    LogIntermediate::LogIntermediate(const std::string &formatString, const std::source_location location) :
-        m_FormatString(formatString),
-        m_Location(location)
+    LogIntermediate::LogIntermediate(const std::string &formatString) :
+        m_FormatString(formatString)
     {
 
     }
@@ -26,10 +23,5 @@ namespace al
     const std::string_view LogIntermediate::FormatString() const
     {
         return m_FormatString;
-    }
-
-    std::source_location&& LogIntermediate::Location()
-    {
-        return std::move(m_Location);
     }
 }
